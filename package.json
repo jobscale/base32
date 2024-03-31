@@ -1,15 +1,21 @@
 {
   "name": "@jobscale/base32",
-  "version": "0.1.2",
-  "description": "base32 encode and decode",
+  "version": "0.1.3",
+  "description": "base32 encode and decode @jobscale/base32",
   "main": "index.js",
   "scripts": {
     "pretest": "npm run lint",
     "lint": "eslint .",
     "test": "jest --runInBand --coverage --collectCoverage"
   },
+  "pre-commit": [
+    "lint",
+    "test"
+  ],
   "keywords": [
-    "base32"
+    "base32",
+    "encode",
+    "decode"
   ],
   "author": "",
   "license": "MIT",

@@ -10,102 +10,47 @@ const list = [
   [1, 2, 3, 4, 5, 6],
   [1, 2, 3, 4, 5, 6, 7],
   [1, 2, 3, 4, 5, 6, 7, 8],
+  [1, 2, 3, 4, 5, 6, 7, 8, 9],
+  [1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
+  [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11],
+];
+const match = [
+  'AE=',
+  'AEBA=',
+  'AEBAG',
+  'AEBAGBA=',
+  'AEBAGBAF',
+  'AEBAGBAFAY=',
+  'AEBAGBAFAYDQ=',
+  'AEBAGBAFAYDQQ',
+  'AEBAGBAFAYDQQCI=',
+  'AEBAGBAFAYDQQCIK',
+  'AEBAGBAFAYDQQCIKBM=',
 ];
 
 describe('test base32', () => {
-  describe('step1', () => {
-    it('toStrictEqual prompt', async () => {
-      const data = list[0];
-      const base32 = new Base32();
-      const encoded = base32.encode(data);
-      const decodedBuffer = base32.decode(encoded);
-      const res = Array.from(decodedBuffer);
-      logger.info(encoded, JSON.stringify(res));
-      expect(res).toStrictEqual(data);
-    });
-  });
+  for (const [index, value] of list.entries()) {
+    const data = {};
+    describe(`test list base32 ${index}`, () => {
+      it('encoded array toBe prompt', async () => {
+        const base32 = new Base32();
+        data.encoded = base32.encode(value);
+        expect(data.encoded).toBe(match[index]);
+      });
 
-  describe('step2', () => {
-    it('toStrictEqual prompt', async () => {
-      const data = list[1];
-      const base32 = new Base32();
-      const encoded = base32.encode(data);
-      const decodedBuffer = base32.decode(encoded);
-      const res = Array.from(decodedBuffer);
-      logger.info(encoded, JSON.stringify(res));
-      expect(res).toStrictEqual(data);
-    });
-  });
+      it('decode toStrictEqual prompt', async () => {
+        const base32 = new Base32();
+        data.binary = base32.decode(data.encoded);
+        data.decoded = Array.from(data.binary);
+        logger.info(data.encoded, JSON.stringify(data.decoded));
+        expect(data.decoded).toStrictEqual(value);
+      });
 
-  describe('step2', () => {
-    it('toStrictEqual prompt', async () => {
-      const data = list[2];
-      const base32 = new Base32();
-      const encoded = base32.encode(data);
-      const decodedBuffer = base32.decode(encoded);
-      const res = Array.from(decodedBuffer);
-      logger.info(encoded, JSON.stringify(res));
-      expect(res).toStrictEqual(data);
+      it('binary toBe prompt', async () => {
+        const base32 = new Base32();
+        data.encoded = base32.encode(data.binary);
+        expect(data.encoded).toBe(match[index]);
+      });
     });
-  });
-
-  describe('step2', () => {
-    it('toStrictEqual prompt', async () => {
-      const data = list[3];
-      const base32 = new Base32();
-      const encoded = base32.encode(data);
-      const decodedBuffer = base32.decode(encoded);
-      const res = Array.from(decodedBuffer);
-      logger.info(encoded, JSON.stringify(res));
-      expect(res).toStrictEqual(data);
-    });
-  });
-
-  describe('step2', () => {
-    it('toStrictEqual prompt', async () => {
-      const data = list[4];
-      const base32 = new Base32();
-      const encoded = base32.encode(data);
-      const decodedBuffer = base32.decode(encoded);
-      const res = Array.from(decodedBuffer);
-      logger.info(encoded, JSON.stringify(res));
-      expect(res).toStrictEqual(data);
-    });
-  });
-
-  describe('step2', () => {
-    it('toStrictEqual prompt', async () => {
-      const data = list[5];
-      const base32 = new Base32();
-      const encoded = base32.encode(data);
-      const decodedBuffer = base32.decode(encoded);
-      const res = Array.from(decodedBuffer);
-      logger.info(encoded, JSON.stringify(res));
-      expect(res).toStrictEqual(data);
-    });
-  });
-
-  describe('step2', () => {
-    it('toStrictEqual prompt', async () => {
-      const data = list[6];
-      const base32 = new Base32();
-      const encoded = base32.encode(data);
-      const decodedBuffer = base32.decode(encoded);
-      const res = Array.from(decodedBuffer);
-      logger.info(encoded, JSON.stringify(res));
-      expect(res).toStrictEqual(data);
-    });
-  });
-
-  describe('step2', () => {
-    it('toStrictEqual prompt', async () => {
-      const data = list[7];
-      const base32 = new Base32();
-      const encoded = base32.encode(data);
-      const decodedBuffer = base32.decode(encoded);
-      const res = Array.from(decodedBuffer);
-      logger.info(encoded, JSON.stringify(res));
-      expect(res).toStrictEqual(data);
-    });
-  });
+  }
 });
