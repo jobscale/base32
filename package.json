@@ -1,6 +1,6 @@
 {
   "name": "@jobscale/base32",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "description": "base32 encode and decode @jobscale/base32",
   "author": "",
   "license": "MIT",

@@ -45,6 +45,15 @@ describe('test base32', () => {
         data.encoded = base32.encode(data.binary);
         expect(data.encoded).toBe(encoded);
       });
+
+      it('decode short prompt', async () => {
+        const base32 = new Base32();
+        data.encoded = data.encoded.replace(/=+$/, '');
+        data.binary = base32.decode(data.encoded);
+        data.decoded = Array.from(data.binary);
+        logger.info(data.encoded, JSON.stringify(data.decoded));
+        expect(data.decoded).toStrictEqual(blob);
+      });
     });
   }
 });
