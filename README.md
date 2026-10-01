@@ -2,6 +2,17 @@
 
 ## Examples
 
+ES Module
+```
+```
+
+CommonJs
+```
+
+```
+
+Jest test
+
 ```
 const logger = console;
 const list = [

@@ -7,6 +7,9 @@ export class Base32 {
   }
 
   encode(buffer) {
+    if (typeof buffer === 'string') {
+      buffer = new TextEncoder().encode(buffer);
+    }
     const bytes = new Uint8Array(buffer);
     let bits = '';
     for (let i = 0; i < bytes.length; i++) {
